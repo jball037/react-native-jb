@@ -398,9 +398,13 @@ module.exports = {
   selection: (PropTypes.shape({
     start: PropTypes.number.isRequired,
     end: PropTypes.number,
+    cursorx: PropTypes.number,
+    cursory: PropTypes.number,
   }): React$PropType$Primitive<{
     end?: number,
     start: number,
+    cursorx: number,
+    cursory: number,
     ...
   }>),
   /**

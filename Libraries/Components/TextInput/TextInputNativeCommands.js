@@ -12,7 +12,7 @@
 
 import * as React from 'react';
 
-import type {Int32} from '../../Types/CodegenTypes';
+import type {Int32, Float} from '../../Types/CodegenTypes';
 
 export interface TextInputNativeCommands<T> {
   +focus: (viewRef: React.ElementRef<T>) => void;
@@ -23,8 +23,8 @@ export interface TextInputNativeCommands<T> {
     value: ?string, // in theory this is nullable
     start: Int32,
     end: Int32,
-    cursorx: Int32,
-    cursory: Int32,
+    cursorx: Float,
+    cursory: Float,
   ) => void;
 }
 

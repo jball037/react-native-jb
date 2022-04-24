@@ -23,6 +23,7 @@ const invariant = require('invariant');
 const nullthrows = require('nullthrows');
 const setAndForwardRef = require('../../Utilities/setAndForwardRef');
 
+import type {Float, WithDefault} from '../../Types/CodegenTypes';
 import type {TextStyleProp, ViewStyleProp} from '../../StyleSheet/StyleSheet';
 import type {ColorValue} from '../../StyleSheet/StyleSheet';
 import type {ViewProps} from '../View/ViewPropTypes';
@@ -99,9 +100,9 @@ export type FocusEvent = TargetEvent;
 
 type Selection = $ReadOnly<{|
   start: number,
-  end: number,
-  cursorx?: ?number,
-  cursory?: ?number,
+  end: WithDefault<number, 8>,
+  cursorx: WithDefault<number, 6.0>,
+  cursory: WithDefault<number, 7.0>,
 |}>;
 
 export type SelectionChangeEvent = SyntheticEvent<
@@ -640,8 +641,8 @@ export type Props = $ReadOnly<{|
   selection?: ?$ReadOnly<{|
     start: number,
     end?: ?number,
-    cursorx?: ?number,
-    cursory?: ?number,
+    cursorx: number,
+    cursory: number,
   |}>,
 
   /**
@@ -852,8 +853,8 @@ function InternalTextInput(props: Props): React.Node {
       : {
           start: props.selection.start,
           end: props.selection.end ?? props.selection.start,
-          cursorx: props.selection.cursorx ?? 3,
-          cursory: props.selection.cursory ?? 4,
+          cursorx: props.selection.cursorx ?? 3.0,
+          cursory: props.selection.cursory ?? 4.0,
         };
 
   const [mostRecentEventCount, setMostRecentEventCount] = useState<number>(0);
@@ -899,6 +900,8 @@ function InternalTextInput(props: Props): React.Node {
       setLastNativeText(props.value);
     }
 
+    console.log('SELECTION', selection)
+
     if (
       selection &&
       lastNativeSelection &&
@@ -920,8 +923,8 @@ function InternalTextInput(props: Props): React.Node {
         text,
         selection?.start ?? -1,
         selection?.end ?? -1,
-        selection?.cursorx ?? -1,
-        selection?.cursory ?? -1,
+        selection?.cursorx ?? 9.0,
+        selection?.cursory ?? 10.0,
       );
     }
   }, [

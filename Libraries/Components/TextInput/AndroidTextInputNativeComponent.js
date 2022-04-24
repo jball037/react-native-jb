@@ -336,7 +336,7 @@ export type NativeProps = $ReadOnly<{|
       target: Int32,
       text: string,
       previousText: string,
-      range: $ReadOnly<{|start: Double, end: Double|}>,
+      range: $ReadOnly<{|start: Double, end: Double, cursorx: Double, cursorY: Double|}>,
     |}>,
   >,
 
@@ -355,7 +355,7 @@ export type NativeProps = $ReadOnly<{|
   onSelectionChange?: ?DirectEventHandler<
     $ReadOnly<{|
       target: Int32,
-      selection: $ReadOnly<{|start: Double, end: Double|}>,
+      selection: $ReadOnly<{|start: Double, end: Double, cursorx: Double, cursorY: Double|}>,
     |}>,
   >,
 
@@ -438,6 +438,8 @@ export type NativeProps = $ReadOnly<{|
   selection?: ?$ReadOnly<{|
     start: Int32,
     end?: ?Int32,
+    cursorx: Float,
+    cursory: Float,
   |}>,
 
   /**
