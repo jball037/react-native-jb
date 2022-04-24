@@ -100,6 +100,8 @@ export type FocusEvent = TargetEvent;
 type Selection = $ReadOnly<{|
   start: number,
   end: number,
+  cursorx?: ?number,
+  cursory?: ?number,
 |}>;
 
 export type SelectionChangeEvent = SyntheticEvent<
@@ -638,6 +640,8 @@ export type Props = $ReadOnly<{|
   selection?: ?$ReadOnly<{|
     start: number,
     end?: ?number,
+    cursorx?: ?number,
+    cursory?: ?number,
   |}>,
 
   /**
@@ -848,6 +852,8 @@ function InternalTextInput(props: Props): React.Node {
       : {
           start: props.selection.start,
           end: props.selection.end ?? props.selection.start,
+          cursorx: props.selection.cursorx ?? 3,
+          cursory: props.selection.cursory ?? 4,
         };
 
   const [mostRecentEventCount, setMostRecentEventCount] = useState<number>(0);
