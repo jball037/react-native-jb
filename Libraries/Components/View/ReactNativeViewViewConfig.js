@@ -160,6 +160,8 @@ const ReactNativeViewConfig = {
     bottom: true,
     clickable: true,
     collapsable: true,
+    cursorx: true,
+    cursory: true,
     direction: true,
     display: true,
     elevation: true,
