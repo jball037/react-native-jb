@@ -920,6 +920,8 @@ function InternalTextInput(props: Props): React.Node {
         text,
         selection?.start ?? -1,
         selection?.end ?? -1,
+        selection?.cursorx ?? -1,
+        selection?.cursory ?? -1,
       );
     }
   }, [
